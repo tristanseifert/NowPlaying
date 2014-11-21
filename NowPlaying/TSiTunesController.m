@@ -156,7 +156,6 @@
  */
 - (void) enableNotifications {
 	[NSDistributedNotificationCenter defaultCenter].suspended = NO;
-	NSLog(@"Enabled notifications");
 	
 	[self updateiTunesState];
 }
@@ -166,7 +165,6 @@
  */
 - (void) disableNotifications {
 	[NSDistributedNotificationCenter defaultCenter].suspended = YES;
-	NSLog(@"Disabled notifications");
 }
 
 #pragma mark - UI Actions
@@ -193,13 +191,9 @@
  * button.
  */
 - (IBAction) actionPlayPause:(id) sender {
-	if(_iTunes.playerState == iTunesEPlSPaused) {
-		[_iTunes resume];
-	} else if(_iTunes.playerState == iTunesEPlSPlaying) {
-		[_iTunes pause];
+	if(_iTunes.isRunning) {
+		[_iTunes playpause];
 	}
-	
-	// force updating of state
 }
 
 @end

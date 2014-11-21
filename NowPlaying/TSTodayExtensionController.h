@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class TSiTunesController;
+@class TSTodaySettings;
 @interface TSTodayExtensionController : NSViewController {
 	IBOutlet NSVisualEffectView *_containerMetadata;
 	IBOutlet NSVisualEffectView *_containerControls;
@@ -16,6 +17,9 @@
 	IBOutlet TSiTunesController *_itunesController;
 	
 	NSTrackingArea *_trackingArea;
+	TSTodaySettings *_settingsController;
 }
+
+- (IBAction) showSettings:(id) sender;
 
 @end

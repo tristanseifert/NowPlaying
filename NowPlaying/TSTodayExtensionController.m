@@ -7,6 +7,8 @@
 //
 
 #import "TSiTunesController.h"
+
+#import "TSTodaySettings.h"
 #import "TSTodayExtensionController.h"
 
 #import <NotificationCenter/NotificationCenter.h>
@@ -15,6 +17,9 @@
 
 - (void) setUpTrackingRect;
 - (void) destroyTrackingRect;
+
+- (void) uiFadeIn;
+- (void) uiFadeOut;
 
 @end
 
@@ -68,13 +73,8 @@
  * the controls and metadata: otherwise, fade out.
  */
 - (void) setUpTrackingRect {
-	NSTrackingAreaOptions options = NSTrackingMouseEnteredAndExited;
-	options |= NSTrackingActiveAlways;
-	
-	NSRect rect = NSMakeRect(0, 320, 320, 320);
-	
-	_trackingArea = [[NSTrackingArea alloc] initWithRect:rect
-												 options:options
+	_trackingArea = [[NSTrackingArea alloc] initWithRect:self.view.bounds
+												 options:NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect
 												   owner:self
 												userInfo:nil];
 	
@@ -89,16 +89,27 @@
 	[self.view removeTrackingArea:_trackingArea];
 }
 
+#pragma mark - Editing
+/**
+ * Editing begins: show the editing view controller.
+ */
+- (IBAction) showSettings:(id) sender {
+	if(!_settingsController) {
+		_settingsController = [[TSTodaySettings alloc] initWithNibName:@"TSTodaySettings"
+																bundle:[NSBundle bundleForClass:self.class]];
+	}
+	
+	[self presentViewControllerInWidget:_settingsController];
+}
+
 #pragma mark - Mouse Events
 /**
- * Fades in the UI, upon mouse entry.
+ * Fades the UI in.
  */
-- (void) mouseEntered:(NSEvent *) theEvent {
+- (void) uiFadeIn {
 	// ensure the views are "visible"
 	_containerMetadata.hidden = NO;
 	_containerControls.hidden = NO;
-	
-	NSLog(@"Enter");
 	
 	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
 		context.duration = 0.33;
@@ -112,13 +123,11 @@
 }
 
 /**
- * Fades the UI out, upon mouse leaving.
+ * Fades the UI out.
  */
-- (void) mouseExited:(NSEvent *) theEvent {
+- (void) uiFadeOut {
 	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
 		context.duration = 0.33;
-		
-		NSLog(@"Leave");
 		
 		// fade them in
 		_containerMetadata.animator.alphaValue = 0.f;

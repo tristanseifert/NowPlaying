@@ -10,6 +10,8 @@
 #import <ScriptingBridge/ScriptingBridge.h>
 
 @class iTunesApplication;
+
+
 @interface TSiTunesController : NSObject {
 	iTunesApplication *_iTunes;
 }

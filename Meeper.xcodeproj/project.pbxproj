@@ -19,6 +19,11 @@
 		6A57B5381A1EE33600271E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5371A1EE33600271E9B /* Images.xcassets */; };
 		6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */; };
 		6A57B53F1A1EEE5A00271E9B /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A57B53E1A1EEE5A00271E9B /* ScriptingBridge.framework */; };
+		6A57B5451A1F051600271E9B /* ITSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B5441A1F051600271E9B /* ITSwitch.m */; };
+		6A57B54A1A1F052300271E9B /* ITSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B5491A1F052300271E9B /* ITSwitch.m */; };
+		6A57B5501A1F05F100271E9B /* TSTodaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B54E1A1F05F100271E9B /* TSTodaySettings.m */; };
+		6A57B5511A1F05F100271E9B /* TSTodaySettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B54F1A1F05F100271E9B /* TSTodaySettings.xib */; };
+		6A57B5551A1F0B1500271E9B /* TSMouseTrackingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B5541A1F0B1500271E9B /* TSMouseTrackingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,15 @@
 		6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSiTunesController.m; sourceTree = "<group>"; };
 		6A57B53E1A1EEE5A00271E9B /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		6A57B5401A1EF11000271E9B /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = ScriptingSupport/iTunes.h; sourceTree = SOURCE_ROOT; };
+		6A57B5431A1F051600271E9B /* ITSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSwitch.h; sourceTree = "<group>"; };
+		6A57B5441A1F051600271E9B /* ITSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSwitch.m; sourceTree = "<group>"; };
+		6A57B5481A1F052300271E9B /* ITSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSwitch.h; sourceTree = "<group>"; };
+		6A57B5491A1F052300271E9B /* ITSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSwitch.m; sourceTree = "<group>"; };
+		6A57B54D1A1F05F100271E9B /* TSTodaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTodaySettings.h; sourceTree = "<group>"; };
+		6A57B54E1A1F05F100271E9B /* TSTodaySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTodaySettings.m; sourceTree = "<group>"; };
+		6A57B54F1A1F05F100271E9B /* TSTodaySettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSTodaySettings.xib; sourceTree = "<group>"; };
+		6A57B5531A1F0B1500271E9B /* TSMouseTrackingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMouseTrackingView.h; sourceTree = "<group>"; };
+		6A57B5541A1F0B1500271E9B /* TSMouseTrackingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMouseTrackingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				6A57B53A1A1EE72D00271E9B /* iTunes Scripting */,
+				6A57B5411A1F04F400271E9B /* Custom Controls */,
 				6A57B5391A1EE72A00271E9B /* UI */,
 				6A57B5361A1EE32000271E9B /* Resources */,
 				6A57B5231A1ED52900271E9B /* Supporting Files */,
@@ -171,6 +186,7 @@
 		6A57B5351A1ED54300271E9B /* Control App */ = {
 			isa = PBXGroup;
 			children = (
+				6A57B5461A1F051700271E9B /* Custom Controls */,
 				6A57B4F81A1E7E5400271E9B /* App Delegate */,
 				6A57B4F91A1E7E5400271E9B /* Resources */,
 			);
@@ -188,9 +204,8 @@
 		6A57B5391A1EE72A00271E9B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */,
-				6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */,
-				6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */,
+				6A57B54C1A1F05DC00271E9B /* Settings */,
+				6A57B54B1A1F05D200271E9B /* Main Widget */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -203,6 +218,72 @@
 				6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */,
 			);
 			name = "iTunes Scripting";
+			sourceTree = "<group>";
+		};
+		6A57B5411A1F04F400271E9B /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5561A1F0C6300271E9B /* TSMouseTrackingView */,
+				6A57B5421A1F051600271E9B /* ITSwitch */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		6A57B5421A1F051600271E9B /* ITSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5431A1F051600271E9B /* ITSwitch.h */,
+				6A57B5441A1F051600271E9B /* ITSwitch.m */,
+			);
+			name = ITSwitch;
+			path = ITSwitch/ITSwitch;
+			sourceTree = SOURCE_ROOT;
+		};
+		6A57B5461A1F051700271E9B /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5471A1F052300271E9B /* ITSwitch */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		6A57B5471A1F052300271E9B /* ITSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5481A1F052300271E9B /* ITSwitch.h */,
+				6A57B5491A1F052300271E9B /* ITSwitch.m */,
+			);
+			name = ITSwitch;
+			path = ITSwitch/ITSwitch;
+			sourceTree = "<group>";
+		};
+		6A57B54B1A1F05D200271E9B /* Main Widget */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */,
+				6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */,
+				6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */,
+			);
+			name = "Main Widget";
+			sourceTree = "<group>";
+		};
+		6A57B54C1A1F05DC00271E9B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B54D1A1F05F100271E9B /* TSTodaySettings.h */,
+				6A57B54E1A1F05F100271E9B /* TSTodaySettings.m */,
+				6A57B54F1A1F05F100271E9B /* TSTodaySettings.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		6A57B5561A1F0C6300271E9B /* TSMouseTrackingView */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5531A1F0B1500271E9B /* TSMouseTrackingView.h */,
+				6A57B5541A1F0B1500271E9B /* TSMouseTrackingView.m */,
+			);
+			name = TSMouseTrackingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +339,11 @@
 					};
 					6A57B51D1A1ED52900271E9B = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -295,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A57B5381A1EE33600271E9B /* Images.xcassets in Resources */,
+				6A57B5511A1F05F100271E9B /* TSTodaySettings.xib in Resources */,
 				6A57B52D1A1ED52900271E9B /* TSTodayExtensionController.xib in Resources */,
 				6A57B5281A1ED52900271E9B /* InfoPlist.strings in Resources */,
 			);
@@ -307,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B54A1A1F052300271E9B /* ITSwitch.m in Sources */,
 				6A57B4FF1A1E7E5400271E9B /* main.m in Sources */,
 				6A57B4FD1A1E7E5400271E9B /* TSAppDelegate.m in Sources */,
 			);
@@ -316,6 +404,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B5451A1F051600271E9B /* ITSwitch.m in Sources */,
+				6A57B5501A1F05F100271E9B /* TSTodaySettings.m in Sources */,
+				6A57B5551A1F0B1500271E9B /* TSMouseTrackingView.m in Sources */,
 				6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */,
 				6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */,
 			);
