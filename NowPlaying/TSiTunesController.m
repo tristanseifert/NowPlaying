@@ -88,6 +88,8 @@
 	[self willChangeValueForKey:@"songCoverArt"];
 	[self willChangeValueForKey:@"iTunesActive"];
 	[self willChangeValueForKey:@"playPauseIcon"];
+	[self willChangeValueForKey:@"songLength"];
+	[self willChangeValueForKey:@"currentPosition"];
 	
 	_iTunesActive = _iTunes.isRunning;
 	
@@ -116,6 +118,10 @@
 			} else {
 				_songCoverArt = [NSImage imageNamed:@"DefaultCover"];
 			}
+			
+			// Song length and position
+			_songLength = track.duration;
+			_currentPosition = _iTunes.playerPosition;
 		} else {
 			_songTitle = nil;
 			_songArtist = nil;
@@ -147,6 +153,8 @@
 	[self didChangeValueForKey:@"songCoverArt"];
 	[self didChangeValueForKey:@"iTunesActive"];
 	[self didChangeValueForKey:@"playPauseIcon"];
+	[self didChangeValueForKey:@"songLength"];
+	[self didChangeValueForKey:@"currentPosition"];
 }
 
 #pragma mark - External Calls

@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern const NSString *TSMouseTrackingViewMouseEntered;
-extern const NSString *TSMouseTrackingViewMouseLeft;
+extern NSString *TSMouseTrackingViewMouseEntered;
+extern NSString *TSMouseTrackingViewMouseLeft;
+extern NSString *TSMouseTrackingViewMouseDown;
+extern NSString *TSMouseTrackingViewMouseUp;
 
 @interface TSMouseTrackingView : NSView {
 	NSTrackingArea *_trackingArea;

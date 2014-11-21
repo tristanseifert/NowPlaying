@@ -26,6 +26,9 @@
 
 @property (nonatomic, readonly) BOOL iTunesActive;
 
+@property (nonatomic, readonly) CGFloat songLength;
+@property (nonatomic, readonly) CGFloat currentPosition;
+
 - (void) enableNotifications;
 - (void) disableNotifications;
 

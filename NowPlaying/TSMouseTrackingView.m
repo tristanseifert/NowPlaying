@@ -12,8 +12,11 @@
 #import "TSMouseTrackingView.h"
 
 // notification keys
-NSString *TSMouseTrackingViewMouseEntered = @"TSMouseTrackingViewMouseEntered";
-NSString *TSMouseTrackingViewMouseLeft = @"TSMouseTrackingViewMouseLeft";
+NSString *TSMouseTrackingViewMouseEntered = @"me.tseifert.mousetrackingview.right";
+NSString *TSMouseTrackingViewMouseLeft = @"me.tseifert.mousetrackingview.left";
+
+NSString *TSMouseTrackingViewMouseDown = @"me.tseifert.mousetrackingview.down";
+NSString *TSMouseTrackingViewMouseUp = @"me.tseifert.mousetrackingview.up";
 
 @interface TSMouseTrackingView ()
 
@@ -57,8 +60,6 @@ NSString *TSMouseTrackingViewMouseLeft = @"TSMouseTrackingViewMouseLeft";
 												userInfo:nil];
 	
 	[self addTrackingArea:_trackingArea];
-	
-	NSLog(@"butts");
 }
 
 /**
@@ -69,10 +70,25 @@ NSString *TSMouseTrackingViewMouseLeft = @"TSMouseTrackingViewMouseLeft";
 }
 
 /**
+ * Mouse down: send TSMouseTrackingViewMouseDown notification.
+ */
+- (void) mouseDown:(NSEvent *) theEvent {
+	[[NSNotificationCenter defaultCenter] postNotificationName:TSMouseTrackingViewMouseDown
+														object:self];
+}
+
+/**
+ * Mouse up: send TSMouseTrackingViewMouseUp notification.
+ */
+- (void) mouseUp:(NSEvent *) theEvent {
+	[[NSNotificationCenter defaultCenter] postNotificationName:TSMouseTrackingViewMouseUp
+														object:self];
+}
+
+/**
  * Mouse entry: send TSMouseTrackingViewMouseEntered notification.
  */
 - (void) mouseEntered:(NSEvent *) theEvent {
-	NSLog(@"Mouse Enter");
 	[[NSNotificationCenter defaultCenter] postNotificationName:TSMouseTrackingViewMouseEntered
 														object:self];
 }
@@ -81,7 +97,6 @@ NSString *TSMouseTrackingViewMouseLeft = @"TSMouseTrackingViewMouseLeft";
  * Mouse exit: send TSMouseTrackingViewMouseLeft notification.
  */
 - (void) mouseExited:(NSEvent *) theEvent {
-	NSLog(@"Mouse Exit");
 	[[NSNotificationCenter defaultCenter] postNotificationName:TSMouseTrackingViewMouseLeft
 														object:self];
 }

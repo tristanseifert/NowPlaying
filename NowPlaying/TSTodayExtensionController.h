@@ -9,16 +9,20 @@
 #import <Cocoa/Cocoa.h>
 
 @class TSiTunesController;
-@class TSTodaySettings;
+@class TSTodaySettings, TSSeekBar;
+
 @interface TSTodayExtensionController : NSViewController {
 	IBOutlet NSVisualEffectView *_containerMetadata;
 	IBOutlet NSVisualEffectView *_containerControls;
 
 	IBOutlet TSiTunesController *_itunesController;
 	
-	NSTrackingArea *_trackingArea;
+	IBOutlet TSSeekBar *_seekBar;
+	
 	TSTodaySettings *_settingsController;
 }
+
+@property (readonly, nonatomic) BOOL controlsVisible;
 
 - (IBAction) showSettings:(id) sender;
 

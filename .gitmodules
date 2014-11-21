@@ -1,3 +1,6 @@
 [submodule "ITSwitch"]
 	path = ITSwitch
 	url = git@github.com:iluuu1994/ITSwitch.git
+[submodule "LADSlider"]
+	path = LADSlider
+	url = https://github.com/Doshipak/LADSlider.git

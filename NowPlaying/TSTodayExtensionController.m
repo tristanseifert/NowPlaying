@@ -8,15 +8,17 @@
 
 #import "TSiTunesController.h"
 
+#import "TSSeekBar.h"
+#import "TSMouseTrackingView.h"
 #import "TSTodaySettings.h"
 #import "TSTodayExtensionController.h"
 
+#import <QuartzCore/QuartzCore.h>
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TSTodayExtensionController () <NCWidgetProviding>
 
-- (void) setUpTrackingRect;
-- (void) destroyTrackingRect;
+- (void) mouseClicked:(NSNotification *) n;
 
 - (void) uiFadeIn;
 - (void) uiFadeOut;
@@ -38,6 +40,27 @@
  */
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	
+	_controlsVisible = YES;
+	
+	// Subscribe to the appropriate notifications for mouse click
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(mouseClicked:)
+												 name:TSMouseTrackingViewMouseDown
+											   object:self.view];
+	
+	// set up bindings manually for the seek bar
+	[_seekBar bind:@"endTime" toObject:_itunesController
+	   withKeyPath:@"songLength" options:nil];
+	[_seekBar bind:@"currentTime" toObject:_itunesController
+	   withKeyPath:@"currentPosition" options:nil];
+}
+
+/**
+ * Performs some cleanup once the view is deallocated.
+ */
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /**
@@ -47,15 +70,6 @@
 	[super viewWillAppear];
 	
 	[_itunesController enableNotifications];
-}
-
-/**
- * Sets up the tracking area, directly after the view appeared.
- */
-- (void) viewDidAppear {
-	[super viewDidAppear];
-	
-	[self setUpTrackingRect];
 }
 
 /**
@@ -69,24 +83,16 @@
 
 #pragma mark - UI
 /**
- * Sets up a tracking rect on the view. When the mouse enters the view, fade in
- * the controls and metadata: otherwise, fade out.
+ * Called when the mouse has been clicked.
  */
-- (void) setUpTrackingRect {
-	_trackingArea = [[NSTrackingArea alloc] initWithRect:self.view.bounds
-												 options:NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect
-												   owner:self
-												userInfo:nil];
+- (void) mouseClicked:(NSNotification *) n {
+	_controlsVisible = !_controlsVisible;
 	
-	// add to this view
-	[self.view addTrackingArea:_trackingArea];
-}
-
-/**
- * Cleans up the tracking rect.
- */
-- (void) destroyTrackingRect {
-	[self.view removeTrackingArea:_trackingArea];
+	if(_controlsVisible) {
+		[self uiFadeIn];
+	} else {
+		[self uiFadeOut];
+	}
 }
 
 #pragma mark - Editing
@@ -112,7 +118,7 @@
 	_containerControls.hidden = NO;
 	
 	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-		context.duration = 0.33;
+		context.duration = 0.5;
 		
 		// fade them in
 		_containerMetadata.animator.alphaValue = 1.f;
@@ -127,7 +133,8 @@
  */
 - (void) uiFadeOut {
 	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-		context.duration = 0.33;
+		context.duration = 0.5;
+		context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 		
 		// fade them in
 		_containerMetadata.animator.alphaValue = 0.f;
