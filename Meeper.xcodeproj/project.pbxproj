@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1EE7A01A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1EE79F1A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.m */; };
 		6A4390FF1A1FAE3E00393E13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4390FE1A1FAE3E00393E13 /* QuartzCore.framework */; };
 		6A43910A1A1FB30900393E13 /* TSSeekBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4391091A1FB30900393E13 /* TSSeekBar.m */; };
 		6A43910D1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43910C1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m */; };
@@ -54,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A1EE79E1A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPopover+NSPopover_TSExtensions.h"; sourceTree = "<group>"; };
+		6A1EE79F1A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPopover+NSPopover_TSExtensions.m"; sourceTree = "<group>"; };
 		6A4390FE1A1FAE3E00393E13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6A4391081A1FB30900393E13 /* TSSeekBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSeekBar.h; sourceTree = "<group>"; };
 		6A4391091A1FB30900393E13 /* TSSeekBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSeekBar.m; sourceTree = "<group>"; };
@@ -111,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A1EE79D1A1FD727003EECCA /* Popover Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				6A1EE79E1A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.h */,
+				6A1EE79F1A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.m */,
+			);
+			name = "Popover Stuff";
+			sourceTree = "<group>";
+		};
 		6A4391071A1FB2F300393E13 /* TSSeekBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +194,7 @@
 		6A57B5221A1ED52900271E9B /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
+				6A1EE79D1A1FD727003EECCA /* Popover Stuff */,
 				6A57B53A1A1EE72D00271E9B /* iTunes Scripting */,
 				6A57B5411A1F04F400271E9B /* Custom Controls */,
 				6A57B5391A1EE72A00271E9B /* UI */,
@@ -432,6 +445,7 @@
 				6A57B5551A1F0B1500271E9B /* TSMouseTrackingView.m in Sources */,
 				6A43910D1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m in Sources */,
 				6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */,
+				6A1EE7A01A1FD73D003EECCA /* NSPopover+NSPopover_TSExtensions.m in Sources */,
 				6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,6 @@
 - (void) configureScriptingBridge;
 
 - (void) playbackStateChanged:(NSNotification *) n;
-- (void) updateiTunesState;
 
 - (void) updateSeekInformation;
 
@@ -36,11 +35,6 @@
 		
 		[self registerNotifications];
 		[self configureScriptingBridge];
-		
-		// set up the timer
-		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self
-												selector:@selector(updateSeekInformation)
-												userInfo:nil repeats:YES];
 	}
 	
 	return self;
@@ -66,7 +60,7 @@
  */
 - (void) dealloc {
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-	[_timer invalidate];
+	[self disableNotifications];
 }
 
 /**
@@ -170,16 +164,19 @@
 		
 		[self willChangeValueForKey:@"songLength"];
 		[self willChangeValueForKey:@"currentPosition"];
+		[self willChangeValueForKey:@"volume"];
 		
 		_songLength = track.duration;
 		_currentPosition = _iTunes.playerPosition;
+		_volume = _iTunes.soundVolume / 100.f;
 		
 		[self didChangeValueForKey:@"songLength"];
 		[self didChangeValueForKey:@"currentPosition"];
+		[self didChangeValueForKey:@"volume"];
 	}
 }
 
-#pragma mark - Seeking
+#pragma mark - Setters
 /**
  * Updates the seek position.
  */
@@ -188,8 +185,26 @@
 	NSAssert(currentPosition > 0, @"Cannot seek to negative pos");
 	
 	_currentPosition = currentPosition;
-	_iTunes.playerPosition = currentPosition;
+	
+	if(_iTunes.isRunning) {
+		_iTunes.playerPosition = currentPosition;
+	}
 }
+
+/**
+ * Sets the iTunes volume.
+ */
+- (void) setVolume:(CGFloat) volume {
+	NSAssert(volume >= 0.f, @"Volume cannot be negative");
+	NSAssert(volume <= 1.0, @"Volume cannot be more than 1.0");
+	
+	_volume = volume;
+	
+	if(_iTunes.isRunning) {
+		_iTunes.soundVolume = _volume * 100;
+	}
+}
+
 
 #pragma mark - External Calls
 /**
@@ -200,6 +215,11 @@
 	[NSDistributedNotificationCenter defaultCenter].suspended = NO;
 	
 	[self updateiTunesState];
+	
+	// set up the timer for seeking
+	_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self
+											selector:@selector(updateSeekInformation)
+											userInfo:nil repeats:YES];
 }
 
 /**
@@ -207,6 +227,8 @@
  */
 - (void) disableNotifications {
 	[NSDistributedNotificationCenter defaultCenter].suspended = YES;
+	
+	[_timer invalidate];
 }
 
 #pragma mark - UI Actions

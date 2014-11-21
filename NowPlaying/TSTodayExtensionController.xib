@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="_containerControls" destination="5bW-Ku-XIs" id="hiL-pW-X4Z"/>
                 <outlet property="_containerMetadata" destination="L5s-Eq-Jpz" id="gHJ-dt-n0x"/>
+                <outlet property="_containerVolume" destination="fjI-sv-UeZ" id="Ez4-lS-eED"/>
                 <outlet property="_itunesController" destination="DBc-ej-M0W" id="jrb-Z6-wLj"/>
                 <outlet property="_seekBar" destination="KpN-9p-ism" id="dqn-bs-fe4"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -16,7 +17,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" customClass="TSMouseTrackingView">
+        <customView wantsLayer="YES" simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" customClass="TSMouseTrackingView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-hC-qNZ">
@@ -30,7 +31,7 @@
                     </connections>
                 </imageView>
                 <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="5bW-Ku-XIs" userLabel="Control View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                     <subviews>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-0L-Wos">
                             <rect key="frame" x="144" y="29" width="32" height="32"/>
@@ -112,9 +113,20 @@
                                 </binding>
                             </connections>
                         </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFe-1p-Wlw">
+                            <rect key="frame" x="10" y="33" width="24" height="24"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="IconVolume" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Cdd-Bm-76A">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showVolumeEQ:" target="-2" id="MoG-3b-C8M"/>
+                                <binding destination="DBc-ej-M0W" name="enabled" keyPath="self.iTunesActive" id="gb4-gj-bfn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="VeF-V9-oqd"/>
+                        <constraint firstAttribute="height" constant="72" id="VeF-V9-oqd"/>
                     </constraints>
                 </visualEffectView>
                 <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="L5s-Eq-Jpz" userLabel="Metadata View">
@@ -179,29 +191,83 @@
                         <constraint firstAttribute="bottom" secondItem="3ij-VN-vwl" secondAttribute="bottom" constant="2" id="tYV-K0-zaa"/>
                     </constraints>
                 </visualEffectView>
+                <visualEffectView hidden="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="fjI-sv-UeZ">
+                    <rect key="frame" x="0.0" y="72" width="320" height="27"/>
+                    <subviews>
+                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-Os-jKf">
+                            <rect key="frame" x="8" y="3" width="304" height="21"/>
+                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="A1s-Il-RUe"/>
+                            <connections>
+                                <binding destination="DBc-ej-M0W" name="value" keyPath="self.volume" id="cqK-Sv-Mpc"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="SOa-Os-jKf" secondAttribute="bottom" constant="5" id="DX3-qt-XUO"/>
+                        <constraint firstItem="SOa-Os-jKf" firstAttribute="top" secondItem="fjI-sv-UeZ" secondAttribute="top" constant="5" id="Qa5-X6-7sR"/>
+                        <constraint firstItem="SOa-Os-jKf" firstAttribute="leading" secondItem="fjI-sv-UeZ" secondAttribute="leading" constant="10" id="tFi-LM-kxw"/>
+                        <constraint firstAttribute="trailing" secondItem="SOa-Os-jKf" secondAttribute="trailing" constant="10" id="urb-iq-iCO"/>
+                    </constraints>
+                </visualEffectView>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="5bW-Ku-XIs" secondAttribute="bottom" id="18U-wx-zK7"/>
                 <constraint firstAttribute="trailing" secondItem="5bW-Ku-XIs" secondAttribute="trailing" id="9w9-N6-V1p"/>
                 <constraint firstAttribute="bottom" secondItem="HkG-hC-qNZ" secondAttribute="bottom" id="DUg-mP-Zib"/>
+                <constraint firstAttribute="trailing" secondItem="fjI-sv-UeZ" secondAttribute="trailing" id="JoZ-re-OBw"/>
                 <constraint firstAttribute="trailing" secondItem="L5s-Eq-Jpz" secondAttribute="trailing" id="NpB-j6-Zwp"/>
                 <constraint firstItem="L5s-Eq-Jpz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Phq-6y-3nC"/>
                 <constraint firstItem="5bW-Ku-XIs" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RpN-4a-ErK"/>
                 <constraint firstAttribute="trailing" secondItem="HkG-hC-qNZ" secondAttribute="trailing" id="Yy7-at-lqY"/>
+                <constraint firstItem="fjI-sv-UeZ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hEs-ZO-fW0"/>
+                <constraint firstItem="5bW-Ku-XIs" firstAttribute="top" secondItem="fjI-sv-UeZ" secondAttribute="bottom" id="hpC-F1-ese"/>
                 <constraint firstItem="HkG-hC-qNZ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="hyu-eb-Agf"/>
                 <constraint firstAttribute="height" constant="320" id="pkf-Kf-d3j"/>
                 <constraint firstItem="L5s-Eq-Jpz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="sHg-Wp-D2p"/>
                 <constraint firstItem="HkG-hC-qNZ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="wh2-ZL-XHC"/>
             </constraints>
-            <point key="canvasLocation" x="361" y="315"/>
+            <point key="canvasLocation" x="602" y="292"/>
         </customView>
         <customObject id="DBc-ej-M0W" userLabel="iTunes Controller" customClass="TSiTunesController"/>
+        <viewController title="Volume" id="wA0-ED-hf4" userLabel="Volume Popover View Controller">
+            <connections>
+                <outlet property="view" destination="2UE-AO-kLv" id="Xz0-Fz-6v9"/>
+            </connections>
+        </viewController>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2UE-AO-kLv">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywQ-3m-AEe">
+                    <rect key="frame" x="8" y="293" width="60" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Volume:" id="IG8-xF-ov1">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3t-0k-bkd">
+                    <rect key="frame" x="234" y="3" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oHF-4P-ega">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dismissController:" target="wA0-ED-hf4" id="gaE-qn-3Nz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="height" constant="320" id="8Vo-0G-J6L"/>
+            </constraints>
+            <point key="canvasLocation" x="239" y="292"/>
+        </customView>
     </objects>
     <resources>
         <image name="IconFastForward" width="32" height="32"/>
         <image name="IconPlay" width="32" height="32"/>
         <image name="IconRewind" width="32" height="32"/>
         <image name="IconSettings" width="24" height="24"/>
+        <image name="IconVolume" width="24" height="24"/>
         <image name="NSCaution" width="32" height="32"/>
     </resources>
 </document>

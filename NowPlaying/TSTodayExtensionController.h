@@ -19,11 +19,15 @@
 	
 	IBOutlet TSSeekBar *_seekBar;
 	
+	IBOutlet NSVisualEffectView *_containerVolume;
+	
 	TSTodaySettings *_settingsController;
 }
 
 @property (readonly, nonatomic) BOOL controlsVisible;
+@property (readonly, nonatomic) BOOL volumeUIShown;
 
 - (IBAction) showSettings:(id) sender;
+- (IBAction) showVolumeEQ:(id) sender;
 
 @end

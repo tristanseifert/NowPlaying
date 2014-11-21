@@ -31,8 +31,12 @@
 @property (nonatomic, readonly) CGFloat songLength;
 @property (nonatomic, readwrite) CGFloat currentPosition;
 
+@property (nonatomic, readwrite) CGFloat volume;
+
 - (void) enableNotifications;
 - (void) disableNotifications;
+
+- (void) updateiTunesState;
 
 // UI Actions
 - (IBAction) actionPrev:(id) sender;

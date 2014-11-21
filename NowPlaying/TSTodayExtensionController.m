@@ -40,10 +40,12 @@
 									forName:@"TSFloatToTimeIntervalTransformer"];
 }
 
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
-    // Update your data and prepare for a snapshot. Call completion handler when you are done
-    // with NoData if nothing has changed or NewData if there is new data since the last
-    // time we called you
+/**
+ * Ask for new iTunes information, so our preview is updated appropriately.
+ */
+- (void) widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
+	[_itunesController updateiTunesState];
+	
     completionHandler(NCUpdateResultNewData);
 }
 
@@ -55,6 +57,7 @@
 	[super viewDidLoad];
 	
 	_controlsVisible = YES;
+	_volumeUIShown = NO;
 	
 	// Subscribe to the appropriate notifications for mouse click
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -121,6 +124,38 @@
 	[self presentViewControllerInWidget:_settingsController];
 }
 
+/**
+ * Shows or hides the volume/EQ user interface.
+ */
+- (IBAction) showVolumeEQ:(id) sender {
+	// Is the volume UI shown?
+	if(_volumeUIShown) {
+		_containerVolume.alphaValue = 1.f;
+		
+		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+			context.duration = 0.5;
+			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+			
+			_containerVolume.animator.alphaValue = 0.f;
+		} completionHandler:^{
+			_containerVolume.hidden = YES;
+		}];
+	} else {
+		// Show the volume control for the first time.
+		_containerVolume.alphaValue = 0.f;
+		_containerVolume.hidden = NO;
+		
+		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+			context.duration = 0.5;
+			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+			
+			_containerVolume.animator.alphaValue = 1.f;
+		} completionHandler:NULL];
+	}
+	
+	_volumeUIShown = !_volumeUIShown;
+}
+
 #pragma mark - Mouse Events
 /**
  * Fades the UI in.
@@ -136,9 +171,7 @@
 		// fade them in
 		_containerMetadata.animator.alphaValue = 1.f;
 		_containerControls.animator.alphaValue = 1.f;
-	} completionHandler:^{
-		
-	}];
+	} completionHandler:NULL];
 }
 
 /**
