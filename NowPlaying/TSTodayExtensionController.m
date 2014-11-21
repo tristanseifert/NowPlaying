@@ -6,10 +6,15 @@
 //  Copyright (c) 2014 Tristan Seifert. All rights reserved.
 //
 
+#import "TSiTunesController.h"
 #import "TSTodayExtensionController.h"
+
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TSTodayExtensionController () <NCWidgetProviding>
+
+- (void) setUpTrackingRect;
+- (void) destroyTrackingRect;
 
 @end
 
@@ -19,7 +24,110 @@
     // Update your data and prepare for a snapshot. Call completion handler when you are done
     // with NoData if nothing has changed or NewData if there is new data since the last
     // time we called you
-    completionHandler(NCUpdateResultNoData);
+    completionHandler(NCUpdateResultNewData);
+}
+
+#pragma mark - NSViewController Notifications
+/**
+ * Performs some additional view initialisation, once loaded.
+ */
+- (void) viewDidLoad {
+	[super viewDidLoad];
+}
+
+/**
+ * Initialises some interface when the view is about to appear.
+ */
+- (void) viewWillAppear {
+	[super viewWillAppear];
+	
+	[_itunesController enableNotifications];
+}
+
+/**
+ * Sets up the tracking area, directly after the view appeared.
+ */
+- (void) viewDidAppear {
+	[super viewDidAppear];
+	
+	[self setUpTrackingRect];
+}
+
+/**
+ * Cleans up some structures when the view has gone off-screen.
+ */
+- (void) viewDidDisappear {
+	[super viewDidDisappear];
+	
+	[_itunesController disableNotifications];
+}
+
+#pragma mark - UI
+/**
+ * Sets up a tracking rect on the view. When the mouse enters the view, fade in
+ * the controls and metadata: otherwise, fade out.
+ */
+- (void) setUpTrackingRect {
+	NSTrackingAreaOptions options = NSTrackingMouseEnteredAndExited;
+	options |= NSTrackingActiveAlways;
+	
+	NSRect rect = NSMakeRect(0, 320, 320, 320);
+	
+	_trackingArea = [[NSTrackingArea alloc] initWithRect:rect
+												 options:options
+												   owner:self
+												userInfo:nil];
+	
+	// add to this view
+	[self.view addTrackingArea:_trackingArea];
+}
+
+/**
+ * Cleans up the tracking rect.
+ */
+- (void) destroyTrackingRect {
+	[self.view removeTrackingArea:_trackingArea];
+}
+
+#pragma mark - Mouse Events
+/**
+ * Fades in the UI, upon mouse entry.
+ */
+- (void) mouseEntered:(NSEvent *) theEvent {
+	// ensure the views are "visible"
+	_containerMetadata.hidden = NO;
+	_containerControls.hidden = NO;
+	
+	NSLog(@"Enter");
+	
+	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+		context.duration = 0.33;
+		
+		// fade them in
+		_containerMetadata.animator.alphaValue = 1.f;
+		_containerControls.animator.alphaValue = 1.f;
+	} completionHandler:^{
+		
+	}];
+}
+
+/**
+ * Fades the UI out, upon mouse leaving.
+ */
+- (void) mouseExited:(NSEvent *) theEvent {
+	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+		context.duration = 0.33;
+		
+		NSLog(@"Leave");
+		
+		// fade them in
+		_containerMetadata.animator.alphaValue = 0.f;
+		_containerControls.animator.alphaValue = 0.f;
+	} completionHandler:^{
+		// hide the views so they're not processed
+		_containerMetadata.hidden = YES;
+		_containerControls.hidden = YES;
+	}];
 }
 
 /**

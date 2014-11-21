@@ -16,6 +16,9 @@
 		6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */; };
 		6A57B52D1A1ED52900271E9B /* TSTodayExtensionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */; };
 		6A57B5301A1ED52900271E9B /* NowPlaying.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A57B51E1A1ED52900271E9B /* NowPlaying.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6A57B5381A1EE33600271E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5371A1EE33600271E9B /* Images.xcassets */; };
+		6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */; };
+		6A57B53F1A1EEE5A00271E9B /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A57B53E1A1EEE5A00271E9B /* ScriptingBridge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,11 @@
 		6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSTodayExtensionController.h; sourceTree = "<group>"; };
 		6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTodayExtensionController.m; sourceTree = "<group>"; };
 		6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSTodayExtensionController.xib; sourceTree = "<group>"; };
+		6A57B5371A1EE33600271E9B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6A57B53B1A1EE73F00271E9B /* TSiTunesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSiTunesController.h; sourceTree = "<group>"; };
+		6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSiTunesController.m; sourceTree = "<group>"; };
+		6A57B53E1A1EEE5A00271E9B /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		6A57B5401A1EF11000271E9B /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = ScriptingSupport/iTunes.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B53F1A1EEE5A00271E9B /* ScriptingBridge.framework in Frameworks */,
 				6A57B5211A1ED52900271E9B /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +140,7 @@
 		6A57B51F1A1ED52900271E9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A57B53E1A1EEE5A00271E9B /* ScriptingBridge.framework */,
 				6A57B5201A1ED52900271E9B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -139,9 +149,9 @@
 		6A57B5221A1ED52900271E9B /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */,
-				6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */,
-				6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */,
+				6A57B53A1A1EE72D00271E9B /* iTunes Scripting */,
+				6A57B5391A1EE72A00271E9B /* UI */,
+				6A57B5361A1EE32000271E9B /* Resources */,
 				6A57B5231A1ED52900271E9B /* Supporting Files */,
 			);
 			name = "Today Extension";
@@ -165,6 +175,34 @@
 				6A57B4F91A1E7E5400271E9B /* Resources */,
 			);
 			name = "Control App";
+			sourceTree = "<group>";
+		};
+		6A57B5361A1EE32000271E9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5371A1EE33600271E9B /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6A57B5391A1EE72A00271E9B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */,
+				6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */,
+				6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		6A57B53A1A1EE72D00271E9B /* iTunes Scripting */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5401A1EF11000271E9B /* iTunes.h */,
+				6A57B53B1A1EE73F00271E9B /* TSiTunesController.h */,
+				6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */,
+			);
+			name = "iTunes Scripting";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B5381A1EE33600271E9B /* Images.xcassets in Resources */,
 				6A57B52D1A1ED52900271E9B /* TSTodayExtensionController.xib in Resources */,
 				6A57B5281A1ED52900271E9B /* InfoPlist.strings in Resources */,
 			);
@@ -277,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */,
 				6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

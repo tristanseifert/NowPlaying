@@ -8,6 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TSTodayExtensionController : NSViewController
+@class TSiTunesController;
+@interface TSTodayExtensionController : NSViewController {
+	IBOutlet NSVisualEffectView *_containerMetadata;
+	IBOutlet NSVisualEffectView *_containerControls;
+
+	IBOutlet TSiTunesController *_itunesController;
+	
+	NSTrackingArea *_trackingArea;
+}
 
 @end

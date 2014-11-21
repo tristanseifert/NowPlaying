@@ -7,32 +7,153 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TSTodayExtensionController">
             <connections>
+                <outlet property="_containerControls" destination="5bW-Ku-XIs" id="hiL-pW-X4Z"/>
+                <outlet property="_containerMetadata" destination="L5s-Eq-Jpz" id="gHJ-dt-n0x"/>
+                <outlet property="_itunesController" destination="DBc-ej-M0W" id="jrb-Z6-wLj"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+        <customView wantsLayer="YES" simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-hC-qNZ">
-                    <rect key="frame" x="0.0" y="80" width="320" height="320"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="HkG-hC-qNZ" secondAttribute="height" multiplier="1:1" id="Kvp-bT-uMu"/>
+                        <constraint firstAttribute="width" secondItem="HkG-hC-qNZ" secondAttribute="height" multiplier="1:1" id="7dR-2g-0jW"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSCaution" id="zYb-Pb-Evn"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="DefaultCover" id="zYb-Pb-Evn"/>
+                    <connections>
+                        <binding destination="DBc-ej-M0W" name="value" keyPath="self.songCoverArt" id="5hE-nJ-UAc"/>
+                    </connections>
                 </imageView>
+                <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5bW-Ku-XIs" userLabel="Control View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <subviews>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-0L-Wos">
+                            <rect key="frame" x="144" y="24" width="32" height="32"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="IconPlay" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="HBb-gS-AZH">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="actionPlayPause:" target="DBc-ej-M0W" id="AAE-Cs-r13"/>
+                                <binding destination="DBc-ej-M0W" name="enabled" keyPath="self.iTunesActive" id="mPU-0G-HBS"/>
+                                <binding destination="DBc-ej-M0W" name="image" keyPath="self.playPauseIcon" id="zsN-FL-msp"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oen-4u-ecj">
+                            <rect key="frame" x="180" y="24" width="32" height="32"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="IconFastForward" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="9BX-qK-Gv7">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="actionNext:" target="DBc-ej-M0W" id="0g5-A8-DTb"/>
+                                <binding destination="DBc-ej-M0W" name="enabled" keyPath="self.iTunesActive" id="yk3-uh-qcc"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Lf-jh-O83">
+                            <rect key="frame" x="107" y="24" width="32" height="32"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="IconRewind" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="uAG-45-djl">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="actionPrev:" target="DBc-ej-M0W" id="Vmy-7J-2Xk"/>
+                                <binding destination="DBc-ej-M0W" name="enabled" keyPath="self.iTunesActive" id="bi5-qc-tXm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="VeF-V9-oqd"/>
+                    </constraints>
+                </visualEffectView>
+                <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="L5s-Eq-Jpz" userLabel="Metadata View">
+                    <rect key="frame" x="0.0" y="270" width="320" height="50"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zw2-X5-qzM">
+                            <rect key="frame" x="0.0" y="18" width="320" height="16"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="t1v-IS-5b4">
+                                <font key="font" metaFont="systemBold"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="DBc-ej-M0W" name="value" keyPath="self.songTitle" id="ODg-lg-z03">
+                                    <dictionary key="options">
+                                        <string key="NSNullPlaceholder">Untitled</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6iR-LO-6y2">
+                            <rect key="frame" x="0.0" y="34" width="320" height="13"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Album" id="O3P-z3-nEk">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="DBc-ej-M0W" name="value" keyPath="self.songAlbum" id="TBb-O9-o4N">
+                                    <dictionary key="options">
+                                        <string key="NSNullPlaceholder">Unknown Album</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-VN-vwl">
+                            <rect key="frame" x="0.0" y="2" width="320" height="13"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="fe8-BO-xUX">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="DBc-ej-M0W" name="value" keyPath="self.songArtist" id="KUv-T2-ZaC">
+                                    <dictionary key="options">
+                                        <string key="NSNullPlaceholder">Unknown Artist</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="3ij-VN-vwl" firstAttribute="leading" secondItem="L5s-Eq-Jpz" secondAttribute="leading" constant="2" id="03p-Tz-BSE"/>
+                        <constraint firstAttribute="height" constant="50" id="2Va-Pn-H6s"/>
+                        <constraint firstAttribute="trailing" secondItem="3ij-VN-vwl" secondAttribute="trailing" constant="2" id="7Ce-35-jjp"/>
+                        <constraint firstAttribute="trailing" secondItem="Zw2-X5-qzM" secondAttribute="trailing" constant="2" id="FfR-SD-j7C"/>
+                        <constraint firstItem="Zw2-X5-qzM" firstAttribute="top" secondItem="L5s-Eq-Jpz" secondAttribute="top" constant="16" id="Ryg-Qq-cBW"/>
+                        <constraint firstItem="Zw2-X5-qzM" firstAttribute="leading" secondItem="L5s-Eq-Jpz" secondAttribute="leading" constant="2" id="gT6-Ne-CWJ"/>
+                        <constraint firstItem="6iR-LO-6y2" firstAttribute="leading" secondItem="L5s-Eq-Jpz" secondAttribute="leading" constant="2" id="ijF-V5-r7J"/>
+                        <constraint firstItem="6iR-LO-6y2" firstAttribute="top" secondItem="L5s-Eq-Jpz" secondAttribute="top" constant="3" id="mll-4n-S6c"/>
+                        <constraint firstAttribute="trailing" secondItem="6iR-LO-6y2" secondAttribute="trailing" constant="2" id="rbq-OW-aVi"/>
+                        <constraint firstAttribute="bottom" secondItem="3ij-VN-vwl" secondAttribute="bottom" constant="2" id="tYV-K0-zaa"/>
+                    </constraints>
+                </visualEffectView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="HkG-hC-qNZ" secondAttribute="trailing" id="BGG-In-ebw"/>
-                <constraint firstItem="HkG-hC-qNZ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="IiA-vK-26i"/>
-                <constraint firstAttribute="height" constant="400" id="pkf-Kf-d3j"/>
-                <constraint firstItem="HkG-hC-qNZ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="z7u-qu-zzI"/>
+                <constraint firstAttribute="bottom" secondItem="5bW-Ku-XIs" secondAttribute="bottom" id="18U-wx-zK7"/>
+                <constraint firstAttribute="trailing" secondItem="5bW-Ku-XIs" secondAttribute="trailing" id="9w9-N6-V1p"/>
+                <constraint firstAttribute="bottom" secondItem="HkG-hC-qNZ" secondAttribute="bottom" id="DUg-mP-Zib"/>
+                <constraint firstAttribute="trailing" secondItem="L5s-Eq-Jpz" secondAttribute="trailing" id="NpB-j6-Zwp"/>
+                <constraint firstItem="L5s-Eq-Jpz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Phq-6y-3nC"/>
+                <constraint firstItem="5bW-Ku-XIs" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RpN-4a-ErK"/>
+                <constraint firstAttribute="trailing" secondItem="HkG-hC-qNZ" secondAttribute="trailing" id="Yy7-at-lqY"/>
+                <constraint firstItem="HkG-hC-qNZ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="hyu-eb-Agf"/>
+                <constraint firstAttribute="height" constant="320" id="pkf-Kf-d3j"/>
+                <constraint firstItem="L5s-Eq-Jpz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="sHg-Wp-D2p"/>
+                <constraint firstItem="HkG-hC-qNZ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="wh2-ZL-XHC"/>
             </constraints>
-            <point key="canvasLocation" x="405" y="315"/>
+            <point key="canvasLocation" x="361" y="315"/>
         </customView>
+        <customObject id="DBc-ej-M0W" userLabel="iTunes Controller" customClass="TSiTunesController"/>
     </objects>
     <resources>
-        <image name="NSCaution" width="32" height="32"/>
+        <image name="DefaultCover" width="500" height="500"/>
+        <image name="IconFastForward" width="32" height="32"/>
+        <image name="IconPlay" width="32" height="32"/>
+        <image name="IconRewind" width="32" height="32"/>
     </resources>
 </document>
