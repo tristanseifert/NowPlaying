@@ -7,34 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A57B4FD1A1E7E5400271E9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B4FC1A1E7E5400271E9B /* AppDelegate.m */; };
+		6A57B4FD1A1E7E5400271E9B /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B4FC1A1E7E5400271E9B /* TSAppDelegate.m */; };
 		6A57B4FF1A1E7E5400271E9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B4FE1A1E7E5400271E9B /* main.m */; };
 		6A57B5011A1E7E5400271E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5001A1E7E5400271E9B /* Images.xcassets */; };
 		6A57B5041A1E7E5400271E9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5021A1E7E5400271E9B /* MainMenu.xib */; };
-		6A57B5101A1E7E5400271E9B /* MeeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B50F1A1E7E5400271E9B /* MeeperTests.m */; };
+		6A57B5211A1ED52900271E9B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A57B5201A1ED52900271E9B /* NotificationCenter.framework */; };
+		6A57B5281A1ED52900271E9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5261A1ED52900271E9B /* InfoPlist.strings */; };
+		6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */; };
+		6A57B52D1A1ED52900271E9B /* TSTodayExtensionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */; };
+		6A57B5301A1ED52900271E9B /* NowPlaying.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A57B51E1A1ED52900271E9B /* NowPlaying.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6A57B50A1A1E7E5400271E9B /* PBXContainerItemProxy */ = {
+		6A57B52E1A1ED52900271E9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A57B4EE1A1E7E5400271E9B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6A57B4F51A1E7E5400271E9B;
-			remoteInfo = Meeper;
+			remoteGlobalIDString = 6A57B51D1A1ED52900271E9B;
+			remoteInfo = NowPlaying;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A57B5341A1ED52900271E9B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6A57B5301A1ED52900271E9B /* NowPlaying.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A57B4F61A1E7E5400271E9B /* Meeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A57B4FA1A1E7E5400271E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A57B4FB1A1E7E5400271E9B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6A57B4FC1A1E7E5400271E9B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6A57B4FB1A1E7E5400271E9B /* TSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAppDelegate.h; sourceTree = "<group>"; };
+		6A57B4FC1A1E7E5400271E9B /* TSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAppDelegate.m; sourceTree = "<group>"; };
 		6A57B4FE1A1E7E5400271E9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A57B5001A1E7E5400271E9B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6A57B5031A1E7E5400271E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		6A57B5091A1E7E5400271E9B /* MeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A57B50E1A1E7E5400271E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A57B50F1A1E7E5400271E9B /* MeeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeeperTests.m; sourceTree = "<group>"; };
+		6A57B51E1A1ED52900271E9B /* NowPlaying.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NowPlaying.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A57B5201A1ED52900271E9B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		6A57B5241A1ED52900271E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A57B5251A1ED52900271E9B /* NowPlaying.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NowPlaying.entitlements; sourceTree = "<group>"; };
+		6A57B5271A1ED52900271E9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSTodayExtensionController.h; sourceTree = "<group>"; };
+		6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTodayExtensionController.m; sourceTree = "<group>"; };
+		6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSTodayExtensionController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +68,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A57B5061A1E7E5400271E9B /* Frameworks */ = {
+		6A57B51B1A1ED52900271E9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B5211A1ED52900271E9B /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +82,9 @@
 		6A57B4ED1A1E7E5400271E9B = {
 			isa = PBXGroup;
 			children = (
-				6A57B4F81A1E7E5400271E9B /* Meeper */,
-				6A57B50C1A1E7E5400271E9B /* MeeperTests */,
+				6A57B5351A1ED54300271E9B /* Control App */,
+				6A57B5221A1ED52900271E9B /* Today Extension */,
+				6A57B51F1A1ED52900271E9B /* Frameworks */,
 				6A57B4F71A1E7E5400271E9B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,24 +93,33 @@
 			isa = PBXGroup;
 			children = (
 				6A57B4F61A1E7E5400271E9B /* Meeper.app */,
-				6A57B5091A1E7E5400271E9B /* MeeperTests.xctest */,
+				6A57B51E1A1ED52900271E9B /* NowPlaying.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A57B4F81A1E7E5400271E9B /* Meeper */ = {
+		6A57B4F81A1E7E5400271E9B /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				6A57B4FB1A1E7E5400271E9B /* AppDelegate.h */,
-				6A57B4FC1A1E7E5400271E9B /* AppDelegate.m */,
-				6A57B5001A1E7E5400271E9B /* Images.xcassets */,
-				6A57B5021A1E7E5400271E9B /* MainMenu.xib */,
-				6A57B4F91A1E7E5400271E9B /* Supporting Files */,
+				6A57B4FB1A1E7E5400271E9B /* TSAppDelegate.h */,
+				6A57B4FC1A1E7E5400271E9B /* TSAppDelegate.m */,
 			);
+			name = "App Delegate";
 			path = Meeper;
 			sourceTree = "<group>";
 		};
-		6A57B4F91A1E7E5400271E9B /* Supporting Files */ = {
+		6A57B4F91A1E7E5400271E9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5021A1E7E5400271E9B /* MainMenu.xib */,
+				6A57B5001A1E7E5400271E9B /* Images.xcassets */,
+				6A57B5191A1E7E6300271E9B /* Supporting Files */,
+			);
+			name = Resources;
+			path = Meeper;
+			sourceTree = "<group>";
+		};
+		6A57B5191A1E7E6300271E9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				6A57B4FA1A1E7E5400271E9B /* Info.plist */,
@@ -94,21 +128,43 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6A57B50C1A1E7E5400271E9B /* MeeperTests */ = {
+		6A57B51F1A1ED52900271E9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6A57B50F1A1E7E5400271E9B /* MeeperTests.m */,
-				6A57B50D1A1E7E5400271E9B /* Supporting Files */,
+				6A57B5201A1ED52900271E9B /* NotificationCenter.framework */,
 			);
-			path = MeeperTests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6A57B50D1A1E7E5400271E9B /* Supporting Files */ = {
+		6A57B5221A1ED52900271E9B /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6A57B50E1A1E7E5400271E9B /* Info.plist */,
+				6A57B5291A1ED52900271E9B /* TSTodayExtensionController.h */,
+				6A57B52A1A1ED52900271E9B /* TSTodayExtensionController.m */,
+				6A57B52C1A1ED52900271E9B /* TSTodayExtensionController.xib */,
+				6A57B5231A1ED52900271E9B /* Supporting Files */,
+			);
+			name = "Today Extension";
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		6A57B5231A1ED52900271E9B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B5241A1ED52900271E9B /* Info.plist */,
+				6A57B5251A1ED52900271E9B /* NowPlaying.entitlements */,
+				6A57B5261A1ED52900271E9B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A57B5351A1ED54300271E9B /* Control App */ = {
+			isa = PBXGroup;
+			children = (
+				6A57B4F81A1E7E5400271E9B /* App Delegate */,
+				6A57B4F91A1E7E5400271E9B /* Resources */,
+			);
+			name = "Control App";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,33 +177,34 @@
 				6A57B4F21A1E7E5400271E9B /* Sources */,
 				6A57B4F31A1E7E5400271E9B /* Frameworks */,
 				6A57B4F41A1E7E5400271E9B /* Resources */,
+				6A57B5341A1ED52900271E9B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6A57B52F1A1ED52900271E9B /* PBXTargetDependency */,
 			);
 			name = Meeper;
 			productName = Meeper;
 			productReference = 6A57B4F61A1E7E5400271E9B /* Meeper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6A57B5081A1E7E5400271E9B /* MeeperTests */ = {
+		6A57B51D1A1ED52900271E9B /* NowPlaying */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A57B5161A1E7E5400271E9B /* Build configuration list for PBXNativeTarget "MeeperTests" */;
+			buildConfigurationList = 6A57B5311A1ED52900271E9B /* Build configuration list for PBXNativeTarget "NowPlaying" */;
 			buildPhases = (
-				6A57B5051A1E7E5400271E9B /* Sources */,
-				6A57B5061A1E7E5400271E9B /* Frameworks */,
-				6A57B5071A1E7E5400271E9B /* Resources */,
+				6A57B51A1A1ED52900271E9B /* Sources */,
+				6A57B51B1A1ED52900271E9B /* Frameworks */,
+				6A57B51C1A1ED52900271E9B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6A57B50B1A1E7E5400271E9B /* PBXTargetDependency */,
 			);
-			name = MeeperTests;
-			productName = MeeperTests;
-			productReference = 6A57B5091A1E7E5400271E9B /* MeeperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = NowPlaying;
+			productName = NowPlaying;
+			productReference = 6A57B51E1A1ED52900271E9B /* NowPlaying.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -161,9 +218,8 @@
 					6A57B4F51A1E7E5400271E9B = {
 						CreatedOnToolsVersion = 6.1;
 					};
-					6A57B5081A1E7E5400271E9B = {
+					6A57B51D1A1ED52900271E9B = {
 						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 6A57B4F51A1E7E5400271E9B;
 					};
 				};
 			};
@@ -181,7 +237,7 @@
 			projectRoot = "";
 			targets = (
 				6A57B4F51A1E7E5400271E9B /* Meeper */,
-				6A57B5081A1E7E5400271E9B /* MeeperTests */,
+				6A57B51D1A1ED52900271E9B /* NowPlaying */,
 			);
 		};
 /* End PBXProject section */
@@ -196,10 +252,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A57B5071A1E7E5400271E9B /* Resources */ = {
+		6A57B51C1A1ED52900271E9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A57B52D1A1ED52900271E9B /* TSTodayExtensionController.xib in Resources */,
+				6A57B5281A1ED52900271E9B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,25 +269,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A57B4FF1A1E7E5400271E9B /* main.m in Sources */,
-				6A57B4FD1A1E7E5400271E9B /* AppDelegate.m in Sources */,
+				6A57B4FD1A1E7E5400271E9B /* TSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A57B5051A1E7E5400271E9B /* Sources */ = {
+		6A57B51A1A1ED52900271E9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A57B5101A1E7E5400271E9B /* MeeperTests.m in Sources */,
+				6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6A57B50B1A1E7E5400271E9B /* PBXTargetDependency */ = {
+		6A57B52F1A1ED52900271E9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A57B4F51A1E7E5400271E9B /* Meeper */;
-			targetProxy = 6A57B50A1A1E7E5400271E9B /* PBXContainerItemProxy */;
+			target = 6A57B51D1A1ED52900271E9B /* NowPlaying */;
+			targetProxy = 6A57B52E1A1ED52900271E9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -240,6 +298,14 @@
 				6A57B5031A1E7E5400271E9B /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		6A57B5261A1ED52900271E9B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A57B5271A1ED52900271E9B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -343,39 +409,33 @@
 			};
 			name = Release;
 		};
-		6A57B5171A1E7E5400271E9B /* Debug */ = {
+		6A57B5321A1ED52900271E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = NowPlaying/NowPlaying.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MeeperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meeper.app/Contents/MacOS/Meeper";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		6A57B5181A1E7E5400271E9B /* Release */ = {
+		6A57B5331A1ED52900271E9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = NowPlaying/NowPlaying.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MeeperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meeper.app/Contents/MacOS/Meeper";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -399,11 +459,11 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		6A57B5161A1E7E5400271E9B /* Build configuration list for PBXNativeTarget "MeeperTests" */ = {
+		6A57B5311A1ED52900271E9B /* Build configuration list for PBXNativeTarget "NowPlaying" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6A57B5171A1E7E5400271E9B /* Debug */,
-				6A57B5181A1E7E5400271E9B /* Release */,
+				6A57B5321A1ED52900271E9B /* Debug */,
+				6A57B5331A1ED52900271E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
