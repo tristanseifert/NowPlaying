@@ -14,6 +14,8 @@
 
 @interface TSiTunesController : NSObject {
 	iTunesApplication *_iTunes;
+	
+	NSTimer *_timer;
 }
 
 @property (nonatomic, readonly) NSString *songTitle;
@@ -27,7 +29,7 @@
 @property (nonatomic, readonly) BOOL iTunesActive;
 
 @property (nonatomic, readonly) CGFloat songLength;
-@property (nonatomic, readonly) CGFloat currentPosition;
+@property (nonatomic, readwrite) CGFloat currentPosition;
 
 - (void) enableNotifications;
 - (void) disableNotifications;

@@ -18,6 +18,8 @@
 - (void) playbackStateChanged:(NSNotification *) n;
 - (void) updateiTunesState;
 
+- (void) updateSeekInformation;
+
 @end
 
 @implementation TSiTunesController
@@ -34,6 +36,11 @@
 		
 		[self registerNotifications];
 		[self configureScriptingBridge];
+		
+		// set up the timer
+		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self
+												selector:@selector(updateSeekInformation)
+												userInfo:nil repeats:YES];
 	}
 	
 	return self;
@@ -59,6 +66,7 @@
  */
 - (void) dealloc {
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+	[_timer invalidate];
 }
 
 /**
@@ -88,8 +96,6 @@
 	[self willChangeValueForKey:@"songCoverArt"];
 	[self willChangeValueForKey:@"iTunesActive"];
 	[self willChangeValueForKey:@"playPauseIcon"];
-	[self willChangeValueForKey:@"songLength"];
-	[self willChangeValueForKey:@"currentPosition"];
 	
 	_iTunesActive = _iTunes.isRunning;
 	
@@ -120,8 +126,7 @@
 			}
 			
 			// Song length and position
-			_songLength = track.duration;
-			_currentPosition = _iTunes.playerPosition;
+			[self updateSeekInformation];
 		} else {
 			_songTitle = nil;
 			_songArtist = nil;
@@ -153,8 +158,37 @@
 	[self didChangeValueForKey:@"songCoverArt"];
 	[self didChangeValueForKey:@"iTunesActive"];
 	[self didChangeValueForKey:@"playPauseIcon"];
-	[self didChangeValueForKey:@"songLength"];
-	[self didChangeValueForKey:@"currentPosition"];
+}
+
+/**
+ * Updates the time information on the bar. This is called periodically from a
+ * repeating timer.
+ */
+- (void) updateSeekInformation {
+	if(_iTunes.isRunning) {
+		iTunesTrack *track = [[_iTunes currentTrack] get];
+		
+		[self willChangeValueForKey:@"songLength"];
+		[self willChangeValueForKey:@"currentPosition"];
+		
+		_songLength = track.duration;
+		_currentPosition = _iTunes.playerPosition;
+		
+		[self didChangeValueForKey:@"songLength"];
+		[self didChangeValueForKey:@"currentPosition"];
+	}
+}
+
+#pragma mark - Seeking
+/**
+ * Updates the seek position.
+ */
+- (void) setCurrentPosition:(CGFloat) currentPosition {
+	NSAssert(currentPosition <= _songLength, @"Cannot seek past end of song");
+	NSAssert(currentPosition > 0, @"Cannot seek to negative pos");
+	
+	_currentPosition = currentPosition;
+	_iTunes.playerPosition = currentPosition;
 }
 
 #pragma mark - External Calls

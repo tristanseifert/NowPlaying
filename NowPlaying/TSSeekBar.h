@@ -8,9 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TSiTunesController;
+
 IB_DESIGNABLE
 @interface TSSeekBar : NSView {
-	NSImage *_imageLeftFill, *_imageKnob, *_imageRightFill;
+	BOOL _isDragging;
+	
+	CGFloat _currentTimeToDraw;
+	
+	IBOutlet TSiTunesController *_iTunes;
 }
 
 @property (nonatomic, readwrite) IBInspectable CGFloat endTime;

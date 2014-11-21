@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6A4390FF1A1FAE3E00393E13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4390FE1A1FAE3E00393E13 /* QuartzCore.framework */; };
 		6A43910A1A1FB30900393E13 /* TSSeekBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4391091A1FB30900393E13 /* TSSeekBar.m */; };
+		6A43910D1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43910C1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m */; };
 		6A57B4FD1A1E7E5400271E9B /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B4FC1A1E7E5400271E9B /* TSAppDelegate.m */; };
 		6A57B4FF1A1E7E5400271E9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57B4FE1A1E7E5400271E9B /* main.m */; };
 		6A57B5011A1E7E5400271E9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A57B5001A1E7E5400271E9B /* Images.xcassets */; };
@@ -56,6 +57,8 @@
 		6A4390FE1A1FAE3E00393E13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6A4391081A1FB30900393E13 /* TSSeekBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSeekBar.h; sourceTree = "<group>"; };
 		6A4391091A1FB30900393E13 /* TSSeekBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSeekBar.m; sourceTree = "<group>"; };
+		6A43910B1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFloatToTimeIntervalTransformer.h; sourceTree = "<group>"; };
+		6A43910C1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFloatToTimeIntervalTransformer.m; sourceTree = "<group>"; };
 		6A57B4F61A1E7E5400271E9B /* Meeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A57B4FA1A1E7E5400271E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A57B4FB1A1E7E5400271E9B /* TSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAppDelegate.h; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				6A57B5401A1EF11000271E9B /* iTunes.h */,
 				6A57B53B1A1EE73F00271E9B /* TSiTunesController.h */,
 				6A57B53C1A1EE73F00271E9B /* TSiTunesController.m */,
+				6A43910B1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.h */,
+				6A43910C1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m */,
 			);
 			name = "iTunes Scripting";
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				6A57B5501A1F05F100271E9B /* TSTodaySettings.m in Sources */,
 				6A43910A1A1FB30900393E13 /* TSSeekBar.m in Sources */,
 				6A57B5551A1F0B1500271E9B /* TSMouseTrackingView.m in Sources */,
+				6A43910D1A1FC3A200393E13 /* TSFloatToTimeIntervalTransformer.m in Sources */,
 				6A57B53D1A1EE73F00271E9B /* TSiTunesController.m in Sources */,
 				6A57B52B1A1ED52900271E9B /* TSTodayExtensionController.m in Sources */,
 			);

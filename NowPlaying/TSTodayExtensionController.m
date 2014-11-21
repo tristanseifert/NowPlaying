@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Tristan Seifert. All rights reserved.
 //
 
+#import "TSFloatToTimeIntervalTransformer.h"
 #import "TSiTunesController.h"
 
 #import "TSSeekBar.h"
@@ -26,6 +27,18 @@
 @end
 
 @implementation TSTodayExtensionController
+
+/**
+ * Registers the value transformers.
+ */
++ (void) load {
+	// create an autoreleased instance of our value transformer
+	TSFloatToTimeIntervalTransformer *t = [[TSFloatToTimeIntervalTransformer alloc] init];
+ 
+	// register it with the name that we refer to it with
+	[NSValueTransformer setValueTransformer:t
+									forName:@"TSFloatToTimeIntervalTransformer"];
+}
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
