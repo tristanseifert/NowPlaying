@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TSTodaySettings : NSViewController
+@class ITSwitch;
+@interface TSTodaySettings : NSViewController {
+	IBOutlet NSTextField *_aboutText;
+	
+	IBOutlet ITSwitch *_hideOverlaySwitch;
+}
 
 @end

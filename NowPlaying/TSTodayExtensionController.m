@@ -7,6 +7,7 @@
 //
 
 #import "TSFloatToTimeIntervalTransformer.h"
+#import "TSUserDefaults.h"
 #import "TSiTunesController.h"
 
 #import "TSSeekBar.h"
@@ -56,9 +57,6 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	_controlsVisible = YES;
-	_volumeUIShown = NO;
-	
 	// Subscribe to the appropriate notifications for mouse click
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(mouseClicked:)
@@ -86,6 +84,25 @@
 	[super viewWillAppear];
 	
 	[_itunesController enableNotifications];
+	
+	// Restore UI state
+	NSUserDefaults *d = [TSUserDefaults sharedUserDefaults];
+	_controlsVisible = [d boolForKey:TSPreferenceOverlayState];
+	
+	if(!_controlsVisible) {
+		// hide the main controls
+		_containerMetadata.alphaValue = 0.f;
+		_containerControls.alphaValue = 0.f;
+		_containerMetadata.hidden = YES;
+		_containerControls.hidden = YES;
+	}
+	
+	_volumeUIShown = [d boolForKey:TSPreferenceVolumeState];
+	if(!_volumeUIShown) {
+		// show volume UI
+		_containerVolume.alphaValue = 0.f;
+		_containerVolume.hidden = YES;
+	}
 }
 
 /**
@@ -102,18 +119,38 @@
  * Called when the mouse has been clicked.
  */
 - (void) mouseClicked:(NSNotification *) n {
-	_controlsVisible = !_controlsVisible;
+	NSUserDefaults *d = [TSUserDefaults sharedUserDefaults];
 	
-	if(_controlsVisible) {
-		[self uiFadeIn];
+	// should the UI toggle when clicked?
+	BOOL shouldChange = [d boolForKey:TSPreferenceHideOverlay];
+	
+	if(shouldChange) {
+		_controlsVisible = !_controlsVisible;
+		
+		if(_controlsVisible) {
+			[self uiFadeIn];
+		} else {
+			[self uiFadeOut];
+		}
 	} else {
-		[self uiFadeOut];
+		// ensure controls are visible
+		if(!_controlsVisible) {
+			[self uiFadeIn];
+		}
+		
+		NSLog(@"Ignoring click: control toggling is off");
+		
+		_controlsVisible = YES;
 	}
+	
+	// save the state of the controls
+	[d setBool:_controlsVisible forKey:TSPreferenceOverlayState];
+	[d synchronize];
 }
 
 #pragma mark - Editing
 /**
- * Editing begins: show the editing view controller.
+ * Load the settings controller, and present it modally in the widget.
  */
 - (IBAction) showSettings:(id) sender {
 	if(!_settingsController) {
@@ -153,7 +190,12 @@
 		} completionHandler:NULL];
 	}
 	
+	// save volume UI shown state
 	_volumeUIShown = !_volumeUIShown;
+	
+	NSUserDefaults *d = [TSUserDefaults sharedUserDefaults];
+	[d setBool:_volumeUIShown forKey:TSPreferenceVolumeState];
+	[d synchronize];
 }
 
 #pragma mark - Mouse Events

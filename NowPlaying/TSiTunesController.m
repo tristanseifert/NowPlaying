@@ -182,7 +182,7 @@
  */
 - (void) setCurrentPosition:(CGFloat) currentPosition {
 	NSAssert(currentPosition <= _songLength, @"Cannot seek past end of song");
-	NSAssert(currentPosition > 0, @"Cannot seek to negative pos");
+	NSAssert(currentPosition >= 0, @"Cannot seek to negative pos");
 	
 	_currentPosition = currentPosition;
 	

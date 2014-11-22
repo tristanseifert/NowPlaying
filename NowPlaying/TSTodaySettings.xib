@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TSTodaySettings">
             <connections>
+                <outlet property="_aboutText" destination="3fm-Hd-Bdn" id="xX8-sF-DLY"/>
+                <outlet property="_hideOverlaySwitch" destination="CLF-3X-XDx" id="zUR-Er-t2c"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -15,21 +17,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKT-cR-H1v">
-                    <rect key="frame" x="18" y="283" width="38" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="AUx-gd-cSn">
+                    <rect key="frame" x="13" y="284" width="165" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Hide Overlay When Clicked" id="AUx-gd-cSn">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLF-3X-XDx" customClass="ITSwitch">
-                    <rect key="frame" x="77" y="276" width="39" height="24"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                </customView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfT-np-iOw">
-                    <rect key="frame" x="224" y="13" width="82" height="32"/>
+                    <rect key="frame" x="229" y="8" width="82" height="32"/>
                     <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BwI-fo-1J1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -38,8 +34,21 @@
                         <action selector="dismissController:" target="-2" id="etB-UO-E1L"/>
                     </connections>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hL7-60-4mr" customClass="TSMouseTrackingView">
-                    <rect key="frame" x="98" y="124" width="163" height="96"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fm-Hd-Bdn">
+                    <rect key="frame" x="13" y="44" width="294" height="34"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="JQp-sv-mP4">
+                        <font key="font" metaFont="system"/>
+                        <string key="title">NowPlaying version %1$@ (Build %2$@)
+Copyright 2014 Tristan Seifert.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLF-3X-XDx" customClass="ITSwitch">
+                    <rect key="frame" x="266" y="281" width="39" height="24"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </customView>
             </subviews>
             <constraints>

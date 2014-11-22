@@ -191,22 +191,44 @@
                         <constraint firstAttribute="bottom" secondItem="3ij-VN-vwl" secondAttribute="bottom" constant="2" id="tYV-K0-zaa"/>
                     </constraints>
                 </visualEffectView>
-                <visualEffectView hidden="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="fjI-sv-UeZ">
-                    <rect key="frame" x="0.0" y="72" width="320" height="27"/>
+                <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="fjI-sv-UeZ" userLabel="Volume Control View">
+                    <rect key="frame" x="0.0" y="72" width="320" height="31"/>
                     <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Oa-dI-8Wz">
+                            <rect key="frame" x="10" y="5" width="21" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="21" id="stK-7H-BoH"/>
+                                <constraint firstAttribute="height" constant="21" id="t0w-lD-Qpy"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="VolumeLow" id="M67-VQ-R6i"/>
+                        </imageView>
                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-Os-jKf">
-                            <rect key="frame" x="8" y="3" width="304" height="21"/>
+                            <rect key="frame" x="34" y="3" width="252" height="25"/>
                             <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="A1s-Il-RUe"/>
                             <connections>
                                 <binding destination="DBc-ej-M0W" name="value" keyPath="self.volume" id="cqK-Sv-Mpc"/>
                             </connections>
                         </slider>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y7W-wq-1ez">
+                            <rect key="frame" x="289" y="5" width="21" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Eb7-Zy-rF2"/>
+                                <constraint firstAttribute="width" constant="21" id="hc0-5v-niS"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="VolumeHigh" id="XaG-t0-wvw"/>
+                        </imageView>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="SOa-Os-jKf" secondAttribute="bottom" constant="5" id="DX3-qt-XUO"/>
+                        <constraint firstAttribute="bottom" secondItem="0Oa-dI-8Wz" secondAttribute="bottom" constant="5" id="ECF-Tb-ux2"/>
+                        <constraint firstItem="0Oa-dI-8Wz" firstAttribute="top" secondItem="fjI-sv-UeZ" secondAttribute="top" constant="5" id="PQW-TV-MKT"/>
                         <constraint firstItem="SOa-Os-jKf" firstAttribute="top" secondItem="fjI-sv-UeZ" secondAttribute="top" constant="5" id="Qa5-X6-7sR"/>
-                        <constraint firstItem="SOa-Os-jKf" firstAttribute="leading" secondItem="fjI-sv-UeZ" secondAttribute="leading" constant="10" id="tFi-LM-kxw"/>
-                        <constraint firstAttribute="trailing" secondItem="SOa-Os-jKf" secondAttribute="trailing" constant="10" id="urb-iq-iCO"/>
+                        <constraint firstItem="SOa-Os-jKf" firstAttribute="leading" secondItem="0Oa-dI-8Wz" secondAttribute="trailing" constant="5" id="RWX-oV-BOY"/>
+                        <constraint firstAttribute="trailing" secondItem="y7W-wq-1ez" secondAttribute="trailing" constant="10" id="UkM-P9-60N"/>
+                        <constraint firstItem="y7W-wq-1ez" firstAttribute="leading" secondItem="SOa-Os-jKf" secondAttribute="trailing" constant="5" id="YbV-G4-xTX"/>
+                        <constraint firstItem="0Oa-dI-8Wz" firstAttribute="leading" secondItem="fjI-sv-UeZ" secondAttribute="leading" constant="10" id="f7k-uq-2fD"/>
+                        <constraint firstItem="y7W-wq-1ez" firstAttribute="top" secondItem="fjI-sv-UeZ" secondAttribute="top" constant="5" id="vlh-Zz-hdF"/>
+                        <constraint firstAttribute="bottom" secondItem="y7W-wq-1ez" secondAttribute="bottom" constant="5" id="xPB-ac-XAk"/>
                     </constraints>
                 </visualEffectView>
             </subviews>
@@ -229,38 +251,7 @@
             <point key="canvasLocation" x="602" y="292"/>
         </customView>
         <customObject id="DBc-ej-M0W" userLabel="iTunes Controller" customClass="TSiTunesController"/>
-        <viewController title="Volume" id="wA0-ED-hf4" userLabel="Volume Popover View Controller">
-            <connections>
-                <outlet property="view" destination="2UE-AO-kLv" id="Xz0-Fz-6v9"/>
-            </connections>
-        </viewController>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2UE-AO-kLv">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywQ-3m-AEe">
-                    <rect key="frame" x="8" y="293" width="60" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Volume:" id="IG8-xF-ov1">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3t-0k-bkd">
-                    <rect key="frame" x="234" y="3" width="82" height="32"/>
-                    <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oHF-4P-ega">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="dismissController:" target="wA0-ED-hf4" id="gaE-qn-3Nz"/>
-                    </connections>
-                </button>
-            </subviews>
-            <constraints>
-                <constraint firstAttribute="height" constant="320" id="8Vo-0G-J6L"/>
-            </constraints>
-            <point key="canvasLocation" x="239" y="292"/>
-        </customView>
+        <viewController title="Volume" id="wA0-ED-hf4" userLabel="Volume Popover View Controller"/>
     </objects>
     <resources>
         <image name="IconFastForward" width="32" height="32"/>
@@ -269,5 +260,7 @@
         <image name="IconSettings" width="24" height="24"/>
         <image name="IconVolume" width="24" height="24"/>
         <image name="NSCaution" width="32" height="32"/>
+        <image name="VolumeHigh" width="21" height="21"/>
+        <image name="VolumeLow" width="21" height="21"/>
     </resources>
 </document>
