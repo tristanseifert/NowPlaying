@@ -13,6 +13,9 @@
 	IBOutlet NSTextField *_aboutText;
 	
 	IBOutlet ITSwitch *_hideOverlaySwitch;
+	IBOutlet ITSwitch *_alwaysPreviousTrackSwitch;
 }
+
+- (IBAction) dismissSettings:(id) sender;
 
 @end

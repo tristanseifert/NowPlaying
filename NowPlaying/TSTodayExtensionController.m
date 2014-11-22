@@ -50,6 +50,14 @@
     completionHandler(NCUpdateResultNewData);
 }
 
+/**
+ * Returns the edge insets for the view. We use a value of zero, to give us
+ * absolute control over any and all insets.
+ */
+- (NSEdgeInsets) widgetMarginInsetsForProposedMarginInsets:(NSEdgeInsets) defaultMarginInset {
+	return NSEdgeInsetsZero;
+}
+
 #pragma mark - NSViewController Notifications
 /**
  * Performs some additional view initialisation, once loaded.
@@ -227,19 +235,20 @@
 		// fade them in
 		_containerMetadata.animator.alphaValue = 0.f;
 		_containerControls.animator.alphaValue = 0.f;
+		
+		// if the volume UI is visible, fade it out, too
+		if(_volumeUIShown) {
+			_containerVolume.animator.alphaValue = 0.f;
+		}
 	} completionHandler:^{
 		// hide the views so they're not processed
 		_containerMetadata.hidden = YES;
 		_containerControls.hidden = YES;
+		
+		if(_volumeUIShown) {
+			_containerVolume.hidden = YES;
+		}
 	}];
-}
-
-/**
- * Returns the edge insets for the view. We use a value of zero, to give us
- * absolute control over any and all insets.
- */
-- (NSEdgeInsets) widgetMarginInsetsForProposedMarginInsets:(NSEdgeInsets) defaultMarginInset {
-	return NSEdgeInsetsZero;
 }
 
 @end

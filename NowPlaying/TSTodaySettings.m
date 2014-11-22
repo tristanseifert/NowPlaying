@@ -43,7 +43,8 @@
 		[d setBool:YES forKey:TSPreferenceOverlayState];
 	}
 	
-//	NSLog(@"Settings: %@", d.dictionaryRepresentation);
+	// Save other settings
+	[d setBool:_alwaysPreviousTrackSwitch.isOn forKey:TSPreferencePreviousBehaviour];
 	
 	// save
 	[d synchronize];
@@ -54,7 +55,17 @@
  */
 - (void) viewWillAppear {
 	NSUserDefaults *d = [TSUserDefaults sharedUserDefaults];
+	
 	_hideOverlaySwitch.on = [d boolForKey:TSPreferenceHideOverlay];
+	_alwaysPreviousTrackSwitch.on = [d boolForKey:TSPreferencePreviousBehaviour];
+}
+
+#pragma mark - UI
+/**
+ * Dismisses the settings view controller.
+ */
+- (IBAction) dismissSettings:(id) sender {
+	[self.parentViewController dismissViewController:self];
 }
 
 @end

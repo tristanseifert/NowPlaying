@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "PlaceholderCover.jpg"
+      "filename" : "CoverartPlaceholder.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "CoverartPlaceholder@2x.png"
     },
     {
       "idiom" : "universal",
@@ -16,7 +17,6 @@
   ],
   "info" : {
     "version" : 1,
-    "author" : "xcode",
-    "template-rendering-intent" : "template"
+    "author" : "xcode"
   }
 }

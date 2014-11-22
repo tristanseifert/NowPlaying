@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 extern NSString* const TSPreferenceHideOverlay;
+extern NSString* const TSPreferencePreviousBehaviour;
+
 extern NSString* const TSPreferenceOverlayState;
 extern NSString* const TSPreferenceVolumeState;
 

@@ -12,7 +12,12 @@
 
 #import "TSUserDefaults.h"
 
+// When YES, the overlays can be hidden by clicking anywhere except buttons.
 NSString* const TSPreferenceHideOverlay = @"TSPreferenceHideOverlay";
+// When YES, the previous button always goes to the previous track, rather than
+// replicating the iTunes behaviour.
+NSString* const TSPreferencePreviousBehaviour = @"TSPreferencePreviousBehaviour";
+
 NSString* const TSPreferenceOverlayState = @"TSPreferenceOverlayState";
 NSString* const TSPreferenceVolumeState = @"TSPreferenceVolumeState";
 

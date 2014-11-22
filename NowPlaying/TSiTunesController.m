@@ -8,6 +8,7 @@
 
 #import "iTunes.h"
 
+#import "TSUserDefaults.h"
 #import "TSiTunesController.h"
 
 @interface TSiTunesController ()
@@ -237,7 +238,22 @@
  */
 - (IBAction) actionPrev:(id) sender {
 	if(_iTunes.isRunning) {
-		[_iTunes previousTrack];
+		// Determine which behaviour to use
+		NSUserDefaults *d = [TSUserDefaults sharedUserDefaults];
+		BOOL behaviour = [d boolForKey:TSPreferencePreviousBehaviour];
+		
+		if(!behaviour) {
+			if(_iTunes.playerPosition <= 3.0) {
+				// go to the previous track, if clicked within first 3 sec
+				[_iTunes previousTrack];
+			} else {
+				// otherwise, simply restart the track
+				_iTunes.playerPosition = 0.f;
+			}
+		} else {
+			// Simply go to the previous track, regardless of configuration.
+			[_iTunes previousTrack];
+		}
 	}
 }
 

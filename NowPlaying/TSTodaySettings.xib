@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TSTodaySettings">
             <connections>
                 <outlet property="_aboutText" destination="3fm-Hd-Bdn" id="xX8-sF-DLY"/>
+                <outlet property="_alwaysPreviousTrackSwitch" destination="XZB-f6-bLa" id="IU1-yr-QG2"/>
                 <outlet property="_hideOverlaySwitch" destination="CLF-3X-XDx" id="zUR-Er-t2c"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -24,6 +25,12 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLF-3X-XDx" customClass="ITSwitch">
+                    <rect key="frame" x="266" y="281" width="39" height="24"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </customView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfT-np-iOw">
                     <rect key="frame" x="229" y="8" width="82" height="32"/>
                     <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BwI-fo-1J1">
@@ -31,7 +38,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="dismissController:" target="-2" id="etB-UO-E1L"/>
+                        <action selector="dismissSettings:" target="-2" id="fPK-1J-zKP"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fm-Hd-Bdn">
@@ -44,10 +51,18 @@ Copyright 2014 Tristan Seifert.</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLF-3X-XDx" customClass="ITSwitch">
-                    <rect key="frame" x="266" y="281" width="39" height="24"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfV-Ke-Vp0">
+                    <rect key="frame" x="13" y="255" width="171" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Always Go To Previous Track" id="Zkc-6o-MV2">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZB-f6-bLa" customClass="ITSwitch">
+                    <rect key="frame" x="266" y="252" width="39" height="24"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </customView>
             </subviews>
